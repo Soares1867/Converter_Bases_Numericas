@@ -62,7 +62,7 @@ int main()
             }
 
             for (i=posicao-1; i>=0; i--){
-                printf(" %d", a[i]);
+                printf(" %d\n", a[i]);
             }
 
         }
@@ -84,7 +84,7 @@ int main()
                 }
             }
 
-            printf(" %d", soma);
+            printf(" %d\n", soma);
         }
 
 
@@ -119,7 +119,7 @@ int main()
                 j++;
             }
 
-            printf("%d", somador);
+            printf("%d\n", somador);
 
         }
 
@@ -150,9 +150,8 @@ int main()
             }
 
             for (p=contador-1;p>=0;p--){ //menos 1 porque 12A tem 3 no contador, mas as posições são 0,1,2
-                printf("%c", c[p]);
+                printf("%c\n", c[p]);
             }
-
 
         }
     }
@@ -166,24 +165,22 @@ int main()
         if (base_digitado_3==10){
             printf("Para a base 10, temos 10 elevado a n posições, que dara a quantia de numeros gerados.\n");
             numero_gerado+=pow(10, posicao3);
-            printf("%d posições na base 10, dará: %d numeros", posicao3, numero_gerado);
+            printf("%d posições na base 10, dará: %d numeros\n", posicao3, numero_gerado);
         }
-/*
-        if (base_digitado_3==2){
-            printf("Para a base 10, temos 10 elevado a n posições, que dara a quantia de numeros gerados.\n");
-            numero_gerado+=pow(10, n);
-            printf("%d posições na base 10, dará: %d numeros", posicao3, numero_gerado);
 
+        
+        if (base_digitado_3==2){
+            printf("Para a base 2, temos 2 elevado a n posições, que dara a quantia de numeros gerados.\n");
+            numero_gerado+=pow(2, posicao3);
+            printf("%d posições na base 2, dará: %d numeros\n", posicao3, numero_gerado);
+        }
 
         if (base_digitado_3==16){
-            printf("Para a base 10, temos 10 elevado a n posições, que dara a quantia de numeros gerados.\n");
-            numero_gerado+=pow(10, n);
-            printf("%d posições na base 10, dará: %d numeros", posicao3, numero_gerado);
-
-
+            printf("Para a base 16, temos 16 elevado a n posições, que dara a quantia de numeros gerados.\n");
+            numero_gerado+=pow(16, posicao3);
+            printf("%d posições na base 16, dará: %d numeros\n", posicao3, numero_gerado);
+        }
     }
-
-*/
-    }
+  
     return 0;
 }
