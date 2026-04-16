@@ -114,26 +114,11 @@ void conversor_base(int base_entrada, int base_saida, int numero, char numeroB[]
 
 
 void quantia_num(int base_digitado_3, int posicao3){
-        int numero_gerado=0;
-    
-        if (base_digitado_3==10){
-            printf("Para a base 10, temos 10 elevado a n posições, que dara a quantia de numeros gerados.\n");
-            numero_gerado+=pow(10, posicao3);
-            printf("%d posições na base 10, dará: %d numeros\n", posicao3, numero_gerado);
-        }
-
-        
-        if (base_digitado_3==2){
-            printf("Para a base 2, temos 2 elevado a n posições, que dara a quantia de numeros gerados.\n");
-            numero_gerado+=pow(2, posicao3);
-            printf("%d posições na base 2, dará: %d numeros\n", posicao3, numero_gerado);
-        }
-
-        if (base_digitado_3==16){
-            printf("Para a base 16, temos 16 elevado a n posições, que dara a quantia de numeros gerados.\n");
-            numero_gerado+=pow(16, posicao3);
-            printf("%d posições na base 16, dará: %d numeros\n", posicao3, numero_gerado);
-        }
+    int numero_gerado=0;
+         
+    printf("Para a base %d, temos %d elevado a n posições, que dara a quantia de numeros gerados.\n", base_digitado_3, base_digitado_3);
+    numero_gerado+=pow(base_digitado_3, posicao3);
+    printf("%d posições na base 10, dará: %d numeros\n", posicao3, numero_gerado);
 
 }
 
@@ -151,56 +136,57 @@ int main()
     //Variaveis para digitado 3
     int base_digitado_3, posicao3;
 
+    while(digitado!=4){
+        printf("*************************************************************\n");
+        printf("                     Bases Numericas                         \n");
+        printf("*************************************************************\n");
+        printf("\n");
+        printf("                           Menu                              \n");
+        printf("#Digite [1] para conversão de bases.............................\n");
+        printf("#Digite [2] para encontrar o MSB (most significant bit) e LSD\n (least significant bit) do valor digitado...................\n");
+        printf("#Digite [3] para saber a quantia de numeros formados por n\n posições.....................................................\n");
+        printf("#Digite [4] para Sair.....................................\n");
+        
+        scanf(" %d", &digitado);
 
-    printf("*************************************************************\n");
-    printf("                     Bases Numericas                         \n");
-    printf("*************************************************************\n");
-    printf("\n");
-    printf("                           Menu                              \n");
-    printf("#Digite [1] para conversão de bases.............................\n");
-    printf("#Digite [2] para encontrar o MSB (most significant bit) e LSD\n (least significant bit) do valor digitado...................\n");
-    printf("#Digite [3] para saber a quantia de numeros formados por n\n posições.....................................................\n");
-    scanf(" %d", &digitado);
+        if (digitado==1){
+            //Base de entrada
+            printf("Digite a Base que voce quer de entrada: \n");
+            printf("[10] Base 10\n[16] Base 16\n[2] Base 2: \n");
+            scanf(" %d", &base_entrada);
 
-    if (digitado==1){
-        //Base de entrada
-        printf("Digite a Base que voce quer de entrada: \n");
-        printf("[10] Base 10\n[16] Base 16\n[2] Base 2: \n");
-        scanf(" %d", &base_entrada);
+            //Base de saida
+            printf("Digite a Base que voce quer de saida: \n");
+            printf("[10] Base 10\n[16] Base 16\n[2] Base 2: \n");
+            scanf(" %d", &base_saida);
 
-        //Base de saida
-        printf("Digite a Base que voce quer de saida: \n");
-        printf("[10] Base 10\n[16] Base 16\n[2] Base 2: \n");
-        scanf(" %d", &base_saida);
+            //Numero para transformar
+            printf("Digite o numero: "); //17
 
-        //Numero para transformar
-        printf("Digite o numero: "); //17
-
-        if (base_entrada==16){
-            // fgets ler string, substitui o scanf, ver no capitulo do livro que fala de string
-            setbuf(stdin, NULL);                         //limpar o fgets
-            fgets(numeroB, sizeof(numeroB), stdin);      //12A   1 2 A \n \0 assim tem 5 digitos, o strlen vai aparecer 4, contando o \n
-            conversor_base(base_entrada, base_saida, 0, numeroB);
+            if (base_entrada==16){
+                // fgets ler string, substitui o scanf, ver no capitulo do livro que fala de string
+                setbuf(stdin, NULL);                         //limpar o fgets
+                fgets(numeroB, sizeof(numeroB), stdin);      //12A   1 2 A \n \0 assim tem 5 digitos, o strlen vai aparecer 4, contando o \n
+                conversor_base(base_entrada, base_saida, 0, numeroB);
+            }
+            else{
+                scanf(" %d", &numero);
+                conversor_base(base_entrada, base_saida, numero, numeroB);
+            }
         }
-        else{
-            scanf(" %d", &numero);
-            conversor_base(base_entrada, base_saida, numero, numeroB);
+
+
+        if(digitado==3){
+            printf("Digite a base: ");
+            scanf(" %d", &base_digitado_3);
+            printf("Digite o posicao: ");
+            scanf(" %d", &posicao3);
+            quantia_num(base_digitado_3, posicao3);
         }
+        printf("\n");
     }
 
-
-    if(digitado==3){
-        printf("Digite a base: ");
-        scanf(" %d", &base_digitado_3);
-        printf("Digite o posicao: ");
-        scanf(" %d", &posicao3);
-        quantia_num(base_digitado_3, posicao3);
-    }
-
-
-    printf("\n");
-
+    printf("FIM!");
    
-    
     return 0;
 }
