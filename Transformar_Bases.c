@@ -113,6 +113,19 @@ void conversor_base(int base_entrada, int base_saida, int numero, char numeroB[]
 }
 
 
+void peso(int base_digitado_2, char numeroC[]){//base:10, numeroC:12
+    int tamanho_do_vetorB;  
+
+    numeroC[strcspn(numeroC, "\n")] = '\0'; //para tirar o \n usamos esse comando, assim, vi contar 1 2 A, OU SEJA 3
+    tamanho_do_vetorB = strlen(numeroC);
+
+    printf("O digito de valor mais significativo é: %c\n", numeroC[0]);
+    printf("O digito de valor menos significativo é: %c\n", numeroC[tamanho_do_vetorB-1]);
+    
+}
+
+
+
 void quantia_num(int base_digitado_3, int posicao3){
     int numero_gerado=0;
          
@@ -135,6 +148,11 @@ int main()
 
     //Variaveis para digitado 3
     int base_digitado_3, posicao3;
+
+
+    //Variaveis para digitado 2
+    int base_digitado_2;
+    char numeroC[400];
 
     while(digitado!=4){
         printf("*************************************************************\n");
@@ -173,6 +191,18 @@ int main()
                 scanf(" %d", &numero);
                 conversor_base(base_entrada, base_saida, numero, numeroB);
             }
+        }
+
+
+        if (digitado==2){
+            //Base de entrada
+            printf("Digite o numero: "); //17
+
+            getchar();
+            // fgets ler string, substitui o scanf, ver no capitulo do livro que fala de string
+            setbuf(stdin, NULL);                         //limpar o fgets
+            fgets(numeroC, sizeof(numeroC), stdin);      //12A   1 2 A \n \0 assim tem 5 digitos, o strlen vai aparecer 4, contando o \n
+            peso(base_digitado_2, numeroC);
         }
 
 
